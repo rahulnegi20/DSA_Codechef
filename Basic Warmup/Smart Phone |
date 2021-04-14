@@ -1,0 +1,27 @@
+# partially solved execution time : 1.79 secs || score : 30 
+def greatest_sum(test_c, num):
+
+    lst = []
+    for i in range(test_c):
+        count = 0
+        index = i
+        for j in range(test_c):
+                if num[index] <= num[j]:
+                    count += 1
+        pot = num[index]*count  
+        #print('this is pot',pot)
+        lst.append(pot)
+    map = 0 
+    for i in range(len(lst)):
+        if map< lst[i]:
+            map = lst[i]
+    print(map)
+test = int(input())
+num = []
+test_c = test
+while test > 0:
+    
+    num.append(int(input()))
+    test -=1
+    
+greatest_sum(test_c, num)    
