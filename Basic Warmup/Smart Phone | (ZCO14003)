@@ -25,3 +25,20 @@ while test > 0:
     test -=1
     
 greatest_sum(test_c, num)    
+
+
+####################################################################
+Correct answer | execution time : 0.93s 
+
+def greatest_sum(test_c, num):
+
+    lst = []
+    num.sort()
+    for i in range(test_c):
+        pot = num[i] * (len(num) - i)
+        lst.append(pot)
+    map = 0 
+    for i in range(len(lst)):
+        if map< lst[i]:
+            map = lst[i]
+    print(map)
