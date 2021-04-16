@@ -1,0 +1,70 @@
+# EXECUTION TIME : 1.15s 
+def name(I, N, Q):
+    if N % 2 == 0 :
+        ans  = N//2
+    else:
+        if I == 1 and Q == 1 or I == 2 and Q == 2:
+            ans = N//2
+        elif I ==2 and Q ==2:
+            ans = (N//2) 
+        else:
+            ans = (N//2) + 1
+    print(ans)        
+testcase = int(input())
+while testcase > 0:
+    G = int(input())
+    while G >0 :
+        I, N, Q = map(int, input().split(' '))
+        name(I, N, Q)
+        G -= 1
+    testcase -= 1
+    
+  #####################################################################
+ # NAIVE APPROACH execution time : 25s + not recommended
+  def name(I, N, Q):
+    lst = []
+    if N % 2 == 0:
+        if I == 1:
+            store = 'H'
+            astore = 'T'
+        else:
+            store = 'T'
+            astore = 'H'
+        count = 0
+        for i in range(N):
+            if i%2 == 0:
+                lst.insert(i, store)
+            else:
+                lst.insert(i, astore)
+    else:
+        if I == 1:
+            store = 'H'
+            astore = 'T'
+        else:
+            store = 'T'
+            astore = 'H'
+        count = 0
+        for i in range(N):
+            if i%2 == 0:
+                lst.insert(i, astore)
+            else:
+                lst.insert(i, store)
+        
+    #print(*lst)
+    for i in range(N):
+        if lst[i] == 'H':
+            count += 1 
+    if Q == 1:
+        print(count)
+    else:
+        print(N-count)
+
+testcase = int(input())
+while testcase > 0:
+    G = int(input())
+    while G >0 :
+        I, N, Q = map(int, input().split(' '))
+        name(I, N, Q)
+        G -= 1
+    testcase -= 1
+    
