@@ -1,0 +1,53 @@
+#execution time : 0.03s
+
+def solution(c_rank, top_c, bug_f, cont_h, origin):
+    laddus = 0
+    if c_rank:
+        if c_rank <=20 and c_rank>0:
+            laddus += 300 + (20 - c_rank)
+        else:
+            laddus += 300
+    if top_c :
+        laddus +=  (300 * top_c)
+    if bug_f :
+        laddus += bug_f
+    if cont_h :
+        laddus += (50 * cont_h)
+   
+    print(laddus//200 if origin == 'INDIAN' else laddus//400)
+
+
+testcase = int(input())
+while testcase > 0:
+    lst = list(map(str, input().strip().split(' ')))
+    act = int(lst[0])
+    origin = lst[1]
+    top_c = cont_h = c_rank = bug_f =  0
+    laddus = 0
+    for i in range(act):
+        act_name = input().split(' ')
+      #  print(act_name)
+        if act_name[0] == "CONTEST_WON":
+            laddus += 300
+            c_rank  = int(act_name[1])
+            if c_rank <=20:
+                laddus +=  (20 - c_rank)
+            continue
+            
+        if act_name[0] == 'TOP_CONTRIBUTOR':
+            laddus +=  300 
+            continue
+            #print('top_c=',top_c)
+
+        if act_name[0] == 'BUG_FOUND' :
+            bug_f = int(act_name[1])
+            laddus +=  bug_f
+            continue
+        if act_name[0] == 'CONTEST_HOSTED':
+            laddus += 50
+            continue
+    
+   # solution(c_rank, top_c, bug_f, cont_h, origin)
+    print(laddus//200 if origin == 'INDIAN' else laddus//400)
+    testcase -= 1
+    
