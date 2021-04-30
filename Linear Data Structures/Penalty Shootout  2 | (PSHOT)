@@ -1,0 +1,34 @@
+# EXECUTION TIME : 1.09s
+def solution(goals, n):
+    sum = 0
+    add = 0
+    left_goal_a = left_goal_b = n
+    for i in range(n*2):
+        if i%2 == 0:
+            sum += goals[i]
+            left_goal_a -= 1
+        else:
+            add += goals[i]
+            left_goal_b -= 1
+        
+        if sum > add:
+            if sum -add > left_goal_b:
+                print(i+1)
+                break   
+        elif add > sum :
+            if add -sum > left_goal_a:
+                print(i+1)
+                break
+        else:
+            if i == 2*n -1 :
+                print(2*n)
+
+testcase = int(input())
+a = []
+b = []
+while testcase > 0:
+    n = int(input())
+    goals = list(map(int, input()))
+    solution(goals, n)
+    testcase -= 1
+    
