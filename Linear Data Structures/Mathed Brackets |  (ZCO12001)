@@ -1,0 +1,32 @@
+# EXECUTION TIME : 0.04s
+def solution(n, inputs):
+    depth = 0
+    nested = 0
+    nest_start = 0
+    
+    depth_info = [0, 0]
+    nest_info =[0, 0]
+    
+    for i in range(n):
+        if depth == 0:
+            nested = 0
+            nest_start = i+1 
+        nested +=1 
+        
+        if inputs[i] == "1":
+            depth += 1 
+        else:
+            depth -= 1 
+            
+        if depth > depth_info[0]:
+            depth_info[0] = depth
+            depth_info[1] = i+1 
+        if nested > nest_info[0]:
+            nest_info[0] = nested
+            nest_info[1] = nest_start
+            
+    print(str(depth_info[0])+' '+ str(depth_info[1])+' '+ str(nest_info[0])+' '+str(nest_info[1]))        
+
+n = int(input())
+inputs = list(map(str, input().strip().split()))
+solution(n, inputs)
